@@ -1,0 +1,73 @@
+apiVersion: harvesterhci.io/v1beta1
+kind: VirtualMachineTemplateVersion
+metadata:
+  annotations:
+    template-version.harvesterhci.io/customName: PGEYD9LrK0
+  labels:
+    template.harvesterhci.io/templateID: jeos-test
+  name: jeos-test-ztndt
+  namespace: default
+spec:
+  templateId: default/jeos-test
+  vm:
+    metadata:
+      annotations:
+        harvesterhci.io/volumeClaimTemplates: '[{"metadata":{"name":"-disk-0-j7bme"},"spec":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"20Gi"}},"volumeMode":"Block"}}]'
+      creationTimestamp: null
+    spec:
+      template:
+        metadata:
+          annotations:
+            harvesterhci.io/sshNames: '[]'
+          labels:
+            harvesterhci.io/creator: harvester
+        spec:
+          domain:
+            cpu:
+              cores: 2
+              sockets: 1
+              threads: 1
+            devices:
+              disks:
+              - disk:
+                  bus: virtio
+                name: cloudinitdisk
+              inputs:
+              - bus: usb
+                name: tablet
+                type: tablet
+              interfaces:
+              - bridge: {}
+                macAddress: 52:54:a1:1c:12:34
+                model: virtio
+                name: default
+            machine:
+              type: ""
+            memory:
+              guest: 2040109465600m
+            resources:
+              limits:
+                cpu: "2"
+                memory: 2Gi
+              requests:
+                cpu: "2"
+                memory: 2Gi
+          networks:
+          - multus:
+              networkName: default/vlan241
+            name: default
+          volumes:
+          - cloudInitNoCloud:
+              userData: |
+                #cloud-config
+                chpasswd:
+                  list: |
+                    root:SUSE-linux
+                    opensuse:SUSE-linux
+                  expire: false
+                ssh_authorized_keys:
+                  - >-
+                    ssh-rsa
+                    AAAAB3NzaC1yc2EAAAADAQABAAABgQDIm3NGmcOVMqEVHmuDX6+PA3miBn20nrfkD+nYwWTtkdphTh28ZhRhFWX21/orflg93GwGk4ExE+5L0wqxBhc0wc7udmzc8HlMk6fypbmxCO6W0QB9tLOnFDiENLNetk7sKfEEKHldEWpFzJ0szUTF5x8HbzIlvbvKaRpzJfB5WvQGwx9uhFF6HFzlHVfdZGjZ2xLkZ5D3ybdqeH27eelXxl7qKP7GGaLC/39xu3iEkoxbuKzZPyJFpNnh1CLS8lks6+R+U3+d4mnW0TFu/bWLhZjne55yYCi4qnMb5QB1/sNQwXiBFlTUDzlJ9TTS0bMHRdBsokkZQU53l0pddZPcf4HATht5sE05x/1vtcTbaUZE8KUeE4IOJinF3ZQnh1q/OHEr98iTyquOA8X7ehdg7MoDbJ0rcpRWZPNzoae8IxOBMDKek6J5d1ATepOraJtK2yRtXbq68wRPEfQNIHPIcZcMWc5ZeKf7mk2p2O4Gv3c2q3chgpxLpnuLTJvwb30=
+                    opensuse@opensuse-desktop
+            name: cloudinitdisk

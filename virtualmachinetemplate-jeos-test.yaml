@@ -1,0 +1,10 @@
+apiVersion: harvesterhci.io/v1beta1
+kind: VirtualMachineTemplate
+metadata:
+  name: jeos-test
+  namespace: default
+spec:
+  defaultVersionId: 
+status:
+  defaultVersion: 1
+  latestVersion: 1
