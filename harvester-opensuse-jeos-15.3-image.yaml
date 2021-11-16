@@ -1,0 +1,10 @@
+apiVersion: harvesterhci.io/v1beta1
+kind: VirtualMachineImage
+metadata:
+  name: opensuse-jeos-15.3
+spec:
+  displayName: opensuse-jeos-15.3
+  pvcName: ""
+  pvcNamespace: ""
+  sourceType: download
+  url: http://172.16.240.2/images/openSUSE-Leap-15.3-JeOS.x86_64-OpenStack-Cloud.qcow2
