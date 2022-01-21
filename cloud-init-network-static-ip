@@ -1,0 +1,11 @@
+network:
+  version: 2
+  ethernets:
+    eth0:
+      addresses: 
+        - 172.16.240.119/24
+      gateway4: 172.16.240.1
+#      nameservers:
+#        addresses: [172.16.250.2, 8.8.8.8]
+## Nameservers doesn't seem to work
+# https://cloudinit.readthedocs.io/en/latest/topics/network-config-format-v2.html#network-config-v2
