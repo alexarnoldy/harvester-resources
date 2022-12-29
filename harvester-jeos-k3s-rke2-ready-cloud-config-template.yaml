@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-  cloudInit: |-
+  cloudInit: |
     ### cloud-init
     #cloud-config
     chpasswd:
@@ -17,15 +17,11 @@ data:
       - SUSEConnect --url http://rmt.example.com
       - SUSEConnect -p sle-module-containers/15.4/x86_64
       - zypper -n in -t pattern apparmor
-      - zypper -n in docker
-      - systemctl start docker
-      - systemctl enable docker
-      - usermod -aG docker opensuse
-      - usermod -aG docker sles
+      - zypper -n in podman
 kind: ConfigMap
 metadata:
   labels:
     harvesterhci.io/cloud-init-template: user
     harvesterhci.io/creator: ""
-  name: jeos-docker-ready
+  name: sles-jeos-k3s-rke2-ready
   namespace: demos

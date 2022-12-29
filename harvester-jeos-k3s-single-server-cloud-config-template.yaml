@@ -2,28 +2,28 @@ apiVersion: v1
 data:
   cloudInit: |-
     ### cloud-init
-#cloud-config
-chpasswd:
-  list: |
-    root:SUSE
-    opensuse:SUSE
-  expire: false
-ssh_authorized_keys:
-  - >-
-    ssh-rsa
-    AAAAB3NzaC1yc2EAAAADAQABAAABgQDIm3NGmcOVMqEVHmuDX6+PA3miBn20nrfkD+nYwWTtkdphTh28ZhRhFWX21/orflg93GwGk4ExE+5L0wqxBhc0wc7udmzc8HlMk6fypbmxCO6W0QB9tLOnFDiENLNetk7sKfEEKHldEWpFzJ0szUTF5x8HbzIlvbvKaRpzJfB5WvQGwx9uhFF6HFzlHVfdZGjZ2xLkZ5D3ybdqeH27eelXxl7qKP7GGaLC/39xu3iEkoxbuKzZPyJFpNnh1CLS8lks6+R+U3+d4mnW0TFu/bWLhZjne55yYCi4qnMb5QB1/sNQwXiBFlTUDzlJ9TTS0bMHRdBsokkZQU53l0pddZPcf4HATht5sE05x/1vtcTbaUZE8KUeE4IOJinF3ZQnh1q/OHEr98iTyquOA8X7ehdg7MoDbJ0rcpRWZPNzoae8IxOBMDKek6J5d1ATepOraJtK2yRtXbq68wRPEfQNIHPIcZcMWc5ZeKf7mk2p2O4Gv3c2q3chgpxLpnuLTJvwb30=
-    opensuse@opensuse-desktop
-runcmd:
-  - SUSEConnect --url http://rmt.example.com
-  - SUSEConnect -p sle-module-containers/15.4/x86_64
-  - zypper -n in -t pattern apparmor
-  - zypper -n in podman
-  - K3s_VERSION="v1.21.6+k3s1"
-  - curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION= INSTALL_K3S_EXEC='server --write-kubeconfig-mode=644' sh -s -
+    #cloud-config
+    chpasswd:
+      list: |
+        root:SUSE
+        opensuse:SUSE
+      expire: false
+    ssh_authorized_keys:
+      - >-
+        ssh-rsa
+        AAAAB3NzaC1yc2EAAAADAQABAAABgQDIm3NGmcOVMqEVHmuDX6+PA3miBn20nrfkD+nYwWTtkdphTh28ZhRhFWX21/orflg93GwGk4ExE+5L0wqxBhc0wc7udmzc8HlMk6fypbmxCO6W0QB9tLOnFDiENLNetk7sKfEEKHldEWpFzJ0szUTF5x8HbzIlvbvKaRpzJfB5WvQGwx9uhFF6HFzlHVfdZGjZ2xLkZ5D3ybdqeH27eelXxl7qKP7GGaLC/39xu3iEkoxbuKzZPyJFpNnh1CLS8lks6+R+U3+d4mnW0TFu/bWLhZjne55yYCi4qnMb5QB1/sNQwXiBFlTUDzlJ9TTS0bMHRdBsokkZQU53l0pddZPcf4HATht5sE05x/1vtcTbaUZE8KUeE4IOJinF3ZQnh1q/OHEr98iTyquOA8X7ehdg7MoDbJ0rcpRWZPNzoae8IxOBMDKek6J5d1ATepOraJtK2yRtXbq68wRPEfQNIHPIcZcMWc5ZeKf7mk2p2O4Gv3c2q3chgpxLpnuLTJvwb30=
+        opensuse@opensuse-desktop
+    runcmd:
+      - SUSEConnect --url http://rmt.example.com
+      - SUSEConnect -p sle-module-containers/15.4/x86_64
+      - zypper -n in -t pattern apparmor
+      - zypper -n in podman
+      - K3s_VERSION="v1.21.6+k3s1"
+      - curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION= INSTALL_K3S_EXEC='server --write-kubeconfig-mode=644' sh -s -
 kind: ConfigMap
 metadata:
   labels:
     harvesterhci.io/cloud-init-template: user
     harvesterhci.io/creator: ""
-  name: k3s-single-server
-  namespace: default
+  name: jeos-k3s-single-server
+  namespace: demos
