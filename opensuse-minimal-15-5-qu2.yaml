@@ -1,0 +1,28 @@
+apiVersion: harvesterhci.io/v1beta1
+kind: VirtualMachineImage
+metadata:
+  annotations:
+    harvesterhci.io/storageClassName: harvester-longhorn
+  finalizers:
+  - wrangler.cattle.io/vm-image-controller
+  generateName: image-
+  generation: 3
+  labels:
+    harvesterhci.io/image-type: raw_qcow2
+    harvesterhci.io/imageDisplayName: opensuse-minimal-15-5-qu2
+    harvesterhci.io/os-type: SLEs
+  name: image-p97lm
+  namespace: harvester-public
+  resourceVersion: "675946"
+spec:
+  checksum: ""
+  displayName: opensuse-minimal-15-5-qu2
+  pvcName: ""
+  pvcNamespace: ""
+  retry: 3
+  sourceType: download
+  storageClassParameters:
+    migratable: "true"
+    numberOfReplicas: "3"
+    staleReplicaTimeout: "30"
+  url: http://172.16.240.2/images/SLES15-SP5-Minimal-VM.x86_64-Cloud-QU2.qcow2
